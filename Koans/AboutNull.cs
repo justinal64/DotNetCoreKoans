@@ -8,7 +8,8 @@ namespace DotNetCoreKoans.Koans
         [Step(1)]
         public void NullIsNotAnObject()
         {
-            Assert.True(null is object);
+            object test = "test";
+            Assert.True(test is object);
 
             // The `is` operator returns false if the object (first parameter)
             // is null, no matter what the type (second parameter) is.
