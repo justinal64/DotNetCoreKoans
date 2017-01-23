@@ -15,12 +15,12 @@ namespace DotNetCoreKoans.Koans
         public void CreatingArrays()
         {
             var empty_array = new object[] { };
-            Assert.Equal(typeof(FillMeIn), empty_array.GetType());
+            Assert.Equal(typeof(object[]), empty_array.GetType());
 
             //Note that you have to explicitly check for subclasses
             Assert.True(typeof(Array).IsAssignableFrom(empty_array.GetType()));
 
-            Assert.Equal(FILL_ME_IN, empty_array.Length);
+            Assert.Equal(0, empty_array.Length);
         }
 
         [Step(2)]
@@ -32,14 +32,14 @@ namespace DotNetCoreKoans.Koans
             Assert.Equal(new int[] { 42 }, array);
 
             //Are arrays 0-based or 1-based?
-            Assert.Equal(42, array[FILL_ME_IN]);
+            Assert.Equal(42, array[0]);
 
             //This is important because...
             //TODO:Add back once this bug is fixed: https://github.com/dotnet/corefx/issues/9998
             //Assert.True(array.IsFixedSize);
 
             //...it means we can't do this: array[1] = 13;
-            Assert.Throws(typeof(FillMeIn), delegate() { array[1] = 13; });
+            Assert.Throws(typeof(System.IndexOutOfRangeException), delegate() { array[1] = 13; });
 
             //This is because the array is fixed at length 1. You could write a function
             //which created a new array bigger than the last, copied the elements over, and
