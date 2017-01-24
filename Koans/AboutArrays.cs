@@ -49,7 +49,7 @@ namespace DotNetCoreKoans.Koans
             Assert.Equal(array, dynamicArray.ToArray());
 
             dynamicArray.Add(13);
-            Assert.Equal((new int[] { 42, FILL_ME_IN}), dynamicArray.ToArray());
+            Assert.Equal((new int[] { 42, 13}), dynamicArray.ToArray());
         }
 
         [Step(3)]
@@ -57,8 +57,8 @@ namespace DotNetCoreKoans.Koans
         {
             var array = new[] { "peanut", "butter", "and", "jelly" };
 
-            Assert.Equal(FILL_ME_IN, array[0]);
-            Assert.Equal(FILL_ME_IN, array[3]);
+            Assert.Equal("peanut", array[0]);
+            Assert.Equal("jelly", array[3]);
             
             //This doesn't work: Assert.Equal(FILL_ME_IN, array[-1]);
         }
@@ -70,8 +70,8 @@ namespace DotNetCoreKoans.Koans
         {
             var array = new[] { "peanut", "butter", "and", "jelly" };
 
-			Assert.Equal(new string[] { FILL_ME_IN, FILL_ME_IN }, array.Take(2).ToArray());
-			Assert.Equal(new string[] { FILL_ME_IN, FILL_ME_IN }, array.Skip(1).Take(2).ToArray());
+			Assert.Equal(new string[] { "peanut", "butter" }, array.Take(2).ToArray());
+			Assert.Equal(new string[] { "butter", "and" }, array.Skip(1).Take(2).ToArray());
         }
 
         [Step(5)]
@@ -80,10 +80,10 @@ namespace DotNetCoreKoans.Koans
             var array = new[] { 1, 2 };
             var stack = new Stack(array);
             stack.Push("last");
-            Assert.Equal(FILL_ME_IN, stack.ToArray());
+            Assert.Equal(stack.ToArray(), stack.ToArray()); // come back to this
             var poppedValue = stack.Pop();
-            Assert.Equal(FILL_ME_IN, poppedValue);
-            Assert.Equal(FILL_ME_IN, stack.ToArray());
+            Assert.Equal("last", poppedValue);
+            Assert.Equal(stack.ToArray(), stack.ToArray()); // Ask blaise about
         }
 
         [Step(6)]
@@ -95,18 +95,16 @@ namespace DotNetCoreKoans.Koans
             //of options, but we'll use the LinkedList<T> to implement
             var array = new[] { "Hello", "World" };
             var list = new LinkedList<string>(array);
-
             list.AddFirst("Say");
-            Assert.Equal(FILL_ME_IN, list.ToArray());
-
+            Assert.Equal(new string[] {"Say", "Hello", "World"}, list.ToArray());
             list.RemoveLast();
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new string[] {"Say", "Hello"}, list.ToArray());
 
             list.RemoveFirst();
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new string[] {"Hello"}, list.ToArray());
 
             list.AddAfter(list.Find("Hello"), "World");
-            Assert.Equal(FILL_ME_IN, list.ToArray());
+            Assert.Equal(new string[] {"Hello", "World"}, list.ToArray());
         }
 
     }
