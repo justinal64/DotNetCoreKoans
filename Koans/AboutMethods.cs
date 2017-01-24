@@ -170,7 +170,7 @@ namespace DotNetCoreKoans.Koans
         {
             Assert.Equal(typeof(int), GiveMeBack<int>(1).GetType());
 
-            Assert.Equal("Hi!", GiveMeBack<string>("Hi!"));
+            Assert.Equal("Hi!", GiveMeBack<string>("Hi!")); 
         }
     }
 }
