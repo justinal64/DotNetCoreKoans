@@ -95,8 +95,10 @@ namespace DotNetCoreKoans.Koans
             //of options, but we'll use the LinkedList<T> to implement
             var array = new[] { "Hello", "World" };
             var list = new LinkedList<string>(array);
+            
             list.AddFirst("Say");
             Assert.Equal(new string[] {"Say", "Hello", "World"}, list.ToArray());
+
             list.RemoveLast();
             Assert.Equal(new string[] {"Say", "Hello"}, list.ToArray());
 
